@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const db = require("./db/db.json");
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 
 
@@ -28,7 +28,7 @@ res.sendFile(path.join(__dirname, "public/index.html"));
 
 //Routes to get to API
 app.get("/api/notes", function(req, res) {
-    res.send(db);
+    res.send(path.join(__dirname, "db/db.json"));
   });
 
 
