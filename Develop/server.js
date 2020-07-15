@@ -33,7 +33,7 @@ app.get("*", function(req, res) {
   });
   
 
-
+//================================================================
 //Post API to save JSON data
 //Need to give these notes a unique id each time
 app.post("/api/notes", function(req, res) {
@@ -47,15 +47,39 @@ notes.push(notesNew);
 
   //for loop to add unique ids
 for (var i = 0;i<notes.length;i++){
-  notes[i].uniqueId = i;
+  notes[i].id = i;
 }
 
   //Writes the JSON data back to db.json
   fs.writeFileSync("./db/db.json", JSON.stringify(notes));
-  console.log("Note saved to db.json. Content: ", notesNew);
   res.json(notes);
 })
 
+// Delete the note =================================================
+app.delete("/api/notes/:id", function(req, res) {
+  //Parse
+  let notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+  let noteBody = req.body;
+  console.log("You've Deleted a Note with this content: ", noteBody);
+  let noteID = req.params.id;
+
+  //Where we delete the note using the filter function
+  notes = notes.filter(thisNote => {
+      return thisNote.id != noteID;
+  })
+  
+   //for loop to readjust unique ids since we deleted one
+  for (var i = 0;i<notes.length;i++){
+  notes[i].id = i;
+  }
+
+
+  //Writes the new json with the deleted note back to the db.json
+  fs.writeFileSync("./db/db.json", JSON.stringify(notes));
+  res.json(notes);
+  console.log("You've deleted your Note!");
+  
+})
 
 
 
