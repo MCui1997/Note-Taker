@@ -6,7 +6,9 @@ This note taker utilizes Node.js and Express to develop the backend portion. Usi
 
 ## Links
 
-Heroku
+[Repo](https://github.com/MCui1997/Note-Taker)
+
+[Heroku]
 
 ## User Story
 ```
