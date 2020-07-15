@@ -47,7 +47,7 @@ notes.push(notesNew);
 
   //for loop to add unique ids
 for (var i = 0;i<notes.length;i++){
-  notes[i].id = i;
+  notes[i].id = i + 1;
 }
 
   //Writes the JSON data back to db.json
@@ -59,8 +59,6 @@ for (var i = 0;i<notes.length;i++){
 app.delete("/api/notes/:id", function(req, res) {
   //Parse
   let notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-  let noteBody = req.body;
-  console.log("You've Deleted a Note with this content: ", noteBody);
   let noteID = req.params.id;
 
   //Where we delete the note using the filter function
@@ -70,7 +68,7 @@ app.delete("/api/notes/:id", function(req, res) {
   
    //for loop to readjust unique ids since we deleted one
   for (var i = 0;i<notes.length;i++){
-  notes[i].id = i;
+  notes[i].id = i + 1;
   }
 
 
