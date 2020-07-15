@@ -1,7 +1,10 @@
 # Note Taker
 
+This note taker utilizes Node.js and Express to develop the backend portion. Using Express, this application can take notes, save them, and delete whichever one the user chooses. 
+
 ## Links
 
+Heroku
 
 ## User Story
 ```
