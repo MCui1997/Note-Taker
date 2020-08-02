@@ -4,12 +4,6 @@ For users that need to keep track of a lot of information, it's easy to forget o
 
 This note taker utilizes Node.js and Express to develop the backend portion. Using Express, this application can take notes, save them, and delete whichever one the user chooses. 
 
-## Links
-
-[Repo](https://github.com/MCui1997/Note-Taker)
-
-[Heroku](https://fatidique-moliere-85099.herokuapp.com/)
-
 ## User Story
 ```
 AS A user, I want to be able to write and save notes
